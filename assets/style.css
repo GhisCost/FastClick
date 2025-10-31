@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #2a2abd;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 81, 189, 0.356) 0%,
+    rgba(31, 218, 255, 0.233) 100%
+  );
+}
+
+.titre {
+  font-family: "Gamja Flower", sans-serif;
+  text-align: center;
+  margin: 35px;
+  font-size: 3.5em;
+  color: rgb(255, 166, 0);
+}
+
+.catchphrase {
+  font-size: 1.5em;
+  font-family: "Sansation", sans-serif;
+  text-align: center;
+  margin: 25px;
+  color: darkblue;
+}
+
+.div-btn {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+#btn {
+  margin: 25px;
+  background-color: darkblue;
+  border-radius: 5px;
+  padding: 15px 25px;
+  color: rgb(255, 166, 0);
+  border: 2px solid rgb(255, 166, 0);
+}
+
+#compteur,
+#result {
+  text-align: center;
+  color: rgb(255, 166, 0);
+  font-size: 1.5em;
+  padding: 10px;
+}
