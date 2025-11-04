@@ -1,9 +1,6 @@
+let script;
 
-test("le jeu se termine après 5 secondes", () => {
-  jest.useFakeTimers();
-
-  const { initDOM } = require('./script.js');
-
+beforeEach(() => {
   document.body.innerHTML = `
     <div id="main">
       <div id="container">
@@ -20,13 +17,39 @@ test("le jeu se termine après 5 secondes", () => {
     </div>
   `;
 
+  jest.resetModules();
+  script = require("./script.js");
+});
+
+afterEach(() => {
+  jest.clearAllTimers();
+  jest.useRealTimers();
+});
+
+test("le jeu démarre et compte le nombre de clics", () => {
+  const { initDOM, clickCompteur } = script;
   initDOM();
 
-  const btn = document.getElementById("btn");
-  const compteur = document.getElementById("compteur");
+  const result = document.getElementById("result");
 
-  btn.click(); 
+  clickCompteur();
+  expect(result.textContent).toBe("Votre resultats: 0");
 
+  clickCompteur();
+  expect(result.textContent).toBe("Votre resultats: 1");
+
+  clickCompteur();
+  expect(result.textContent).toBe("Votre resultats: 2");
+});
+
+test("le jeu se termine après 5 secondes", () => {
+  jest.useFakeTimers();
+
+  const { initDOM, clickCompteur } = script;
+
+  const { btn, compteur } = initDOM();
+
+  clickCompteur();
   expect(compteur.textContent).toBe("Il vous reste 5 secondes");
 
   jest.advanceTimersByTime(1000);
@@ -39,10 +62,4 @@ test("le jeu se termine après 5 secondes", () => {
   jest.advanceTimersByTime(1500);
   expect(btn.disabled).toBe(false);
   expect(compteur.textContent).toBe("Clique pour rejouer !");
-});
-
-
-afterEach(() => {
-  jest.clearAllTimers();
-  jest.useRealTimers();
 });

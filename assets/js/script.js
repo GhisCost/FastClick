@@ -18,6 +18,8 @@ function initDOM() {
   btn.addEventListener("click", clickCompteur);
   btn.addEventListener("mouseover", changerBtnClic);
   btn.addEventListener("mouseleave", changerBtnPasClic);
+
+  return { btn, compteur, result };
 }
 
 function clickCompteur() {
