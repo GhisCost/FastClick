@@ -131,8 +131,11 @@ const getData = async () => {
     const data = await response.json();
     
   let listScore = document.getElementById('listScore');
+
+  console.log (data);
+
   data.forEach(element => {
-    
+    listScore.innerHTML= "<li> Pseudo: " + element.username + " Score: " + element.score + " <img class=avatar src=" + element.avatar+" >"
   });
 
   } catch (error) {
